@@ -426,7 +426,13 @@ if ($_POST)
 
 	if (! empty($new_post_array['contact_list']['contacts']['contact_16']['details'])) { $new_post_array['contact_list']['contacts']['contact_16']['contact_type_id']=16; }
 
-	if (! empty($new_post_array['contact_list']['contacts']['contact_34']['details'])) { $new_post_array['contact_list']['contacts']['contact_34']['contact_type_id']=34; }
+	if (! empty($new_post_array['contact_list']['contacts']['contact_34']['details']))	{
+		$new_post_array['contact_list']['contacts']['contact_34']['contact_type_id']=34;
+		if ($new_post_array['contact_list']['contacts']['contact_33']['details'] == $new_post_array['contact_list']['contacts']['contact_34']['details'])	{
+			//Anhörig 1 och 2 är lika
+			$new_post_array['contact_list']['contacts']['contact_34']['details'] = "";
+		}
+	}
 
 	if (! empty($new_post_array['contact_list']['contacts']['contact_39']['details'])) { $new_post_array['contact_list']['contacts']['contact_39']['contact_type_id']=39; } 
 
