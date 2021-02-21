@@ -1,4 +1,4 @@
-<a id="formular"></a><!--  För att tillåta att länkar till formuläret på sidan -->
+﻿<a id="formular"></a><!--  För att tillåta att länkar till formuläret på sidan -->
 
 <?php
 
@@ -333,6 +333,20 @@ if ($_POST)
 		$new_post_array['profile']['email'] = $new_post_array['contact_list']['contacts']['contact_33']['details']; //sätt primär epost från förälder1
 	}	
 
+	//Fixar versaler för namn
+	$new_post_array['profile']['first_name'] = ucwords($new_post_array['profile']['first_name']);
+	$new_post_array['profile']['last_name'] = ucwords($new_post_array['profile']['last_name']);
+
+	$new_post_array['address_list']['addresses']['address_1']['address_line1'] = ucwords($new_post_array['address_list']['addresses']['address_1']['address_line1']);	//Gatuadress
+	$new_post_array['address_list']['addresses']['address_1']['zip_name'] = ucwords($new_post_array['address_list']['addresses']['address_1']['zip_name']);	//Postort
+
+	$new_post_array['contact_list']['contacts']['contact_14']['details'] = ucwords($new_post_array['contact_list']['contacts']['contact_14']['details']);	//Mamma namn
+	$new_post_array['contact_list']['contacts']['contact_16']['details'] = ucwords($new_post_array['contact_list']['contacts']['contact_16']['details']);	//Pappa namn
+
+	$new_post_array['avdelning'] = ucwords($new_post_array['avdelning']);	//Avdelning
+	$new_post_array['barn_namn'] = ucwords($new_post_array['barn_namn']);	//Namn på ev barn till person
+
+	
 	//Fixa telefonnummer
 	$nummer_mobil = "";
 	$nummer_mamma_mobil = "";
@@ -717,6 +731,7 @@ if ($_POST)
 	echo $formular;
 }
 
+/*******Lösa funktioner*/
 
 /**Givet ett skolår ger aktuell gren**/
 function getGren($school_year, $can_start_scouting) {
@@ -762,7 +777,6 @@ function getGren($school_year, $can_start_scouting) {
 }
 
 
-/*******Lösa funktioner*/
 function fixphonenumber($inputnumber)	{
 
     $number = preg_replace('~\D~', '',$inputnumber);
